@@ -211,11 +211,22 @@ public class Janela extends javax.swing.JDialog {
                     else if( v1.charAt(i) == '0' && v2.charAt(i) == '1')
                     {
             
+                        saida = "";
                         for(int j = i; j >= 0; j--)
                         {
-                            System.out.println(v1.charAt(j));
+
+                            if( v1.charAt(j) == '1')
+                            {
+                              
+                                saida = '0' + saida;
+                                
+                            }
 
                         }
+                        
+                        
+                        saida = "" + Integer.toBinaryString ((Integer.parseInt(v1, 2) - Integer.parseInt(v2, 2)));
+                        break;
                     }        
                     
                 }
