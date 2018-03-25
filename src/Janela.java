@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -108,13 +111,118 @@ public class Janela extends javax.swing.JDialog {
 
     private void saidaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saidaActionPerformed
         // TODO add your handling code here:
+        
+       
     }//GEN-LAST:event_saidaActionPerformed
 
     private void enterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_enterActionPerformed
         if (this.opcoes.getSelectedIndex() == 0) {    //SOMA
-            System.out.println("SOMA");
+           System.out.println("SOMA");
+
+            String v1 = valor1.getText();
+            String v2 = valor2.getText();
+            String saida = "";
+            int vaiUm = 0;
+            
+            if( v1.length()-1 != v2.length()-1)
+            {
+                JOptionPane.showMessageDialog(null, "Erro! Tamanhos diferentes, favor acrescentar zeros na frente do numero para igualar o tamaho.");
+            }
+            else
+            {
+                for (int i = v1.length()-1; i >= 0; i--) {
+                if (vaiUm == 1) {
+                    if (i == 0) {
+                        if ((v1.charAt(i) == '1') && (v2.charAt(i) == '1')) {
+                            saida = "11" + saida;
+                        } else if ((v1.charAt(i) == '1') && (v2.charAt(i) == '0')) {
+                            saida = "10" + saida;
+                        } else if ((v1.charAt(i) == '0') && (v2.charAt(i) == '1')) {
+                            saida = "10" + saida;
+                        } else if ((v1.charAt(i) == '0') && (v2.charAt(i) == '0')) {
+                            saida = '1' + saida;
+                        }
+                    } else {
+                        if ((v1.charAt(i) == '1') && (v2.charAt(i) == '1')) {
+                            saida = '1' + saida;
+                            vaiUm = 1;
+                            continue;
+                        } else if ((v1.charAt(i) == '1') && (v2.charAt(i) == '0')) {
+                            saida = '0' + saida;
+                            vaiUm = 1;
+                            continue;
+                        } else if ((v1.charAt(i) == '0') && (v2.charAt(i) == '1')) {
+                            saida = '0' + saida;
+                            vaiUm = 1;
+                            continue;
+                        } else if ((v1.charAt(i) == '0') && (v2.charAt(i) == '0')) {
+                            saida = '1' + saida;
+                        }
+                    }
+                    vaiUm = 0;
+                } else {
+                    if ((v1.charAt(i) == '1') && (v2.charAt(i) == '1')) {
+                        if (i == 0) {
+                            saida = "10" + saida;
+                        } else {
+                            saida = '0' + saida;
+                        }
+                        vaiUm = 1;
+                    } else if ((v1.charAt(i) == '1') && (v2.charAt(i) == '0')) {
+                        saida = '1' + saida;
+                    } else if ((v1.charAt(i) == '0') && (v2.charAt(i) == '1')) {
+                        saida = '1' + saida;
+                    } else if ((v1.charAt(i) == '0') && (v2.charAt(i) == '0')) {
+                        saida = '0' + saida;
+                    }
+                }
+            }
+            
+                this.saida.setText(saida);
+            }
+
         } else {                                      //SUBTRAÇÃO
             System.out.println("SUBTRAÇÃO");
+            
+            String v1 = valor1.getText();
+            String v2 = valor2.getText();
+            String saida = "";
+            
+            if( v1.length()-1 != v2.length()-1)
+            {
+                JOptionPane.showMessageDialog(null, "Erro! Tamanhos diferentes, favor acrescentar zeros na frente do numero para igualar o tamaho.");
+            }
+            else
+            {
+                for(int i = v1.length()-1; i >=0; i--)
+                {
+                    if( v1.charAt(i) == '0' && v2.charAt(i) == '0')
+                    {
+                        saida = '0' + saida;
+                    }
+                    else if( v1.charAt(i) == '1' && v2.charAt(i) == '0')
+                    {
+                        saida = '1' + saida;
+                    }
+                    else if( v1.charAt(i) == '1' && v2.charAt(i) == '1')
+                    {
+                        saida = '0' + saida;
+                    }
+                    else if( v1.charAt(i) == '0' && v2.charAt(i) == '1')
+                    {
+            
+                        for(int j = i; j >= 0; j--)
+                        {
+                            System.out.println(v1.charAt(j));
+
+                        }
+                    }        
+                    
+                }
+                
+                this.saida.setText(saida);
+            }
+         
         }
     }//GEN-LAST:event_enterActionPerformed
 
